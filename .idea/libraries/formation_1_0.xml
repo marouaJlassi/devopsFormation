@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="formation-1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/formation-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
