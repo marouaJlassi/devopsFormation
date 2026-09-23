@@ -18,7 +18,7 @@ public class CategorieProduitController {
 
     // http://localhost:8089/SpringMVC/categorieProduit/retrieve-all-categorieProduit
     @GetMapping("/retrieve-all-categorieProduit")
-    @ResponseBody
+
     public List<CategorieProduit> getCategorieProduit() {
         List<CategorieProduit> list = categorieProduitService.retrieveAllCategorieProduits();
         return list;
@@ -33,7 +33,7 @@ public class CategorieProduitController {
 
     // http://localhost:8089/SpringMVC/categorieProduit/add-categorieProduit
     @PostMapping("/add-categorieProduit")
-    @ResponseBody
+
     public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
         CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(cp);
         return categorieProduit;
