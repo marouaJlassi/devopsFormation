@@ -112,4 +112,54 @@
 			<url>http://127.0.0.1:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
+	<!-- Scan de vulnérabilités Trivy : mvn verify -Ptrivy -DskipTests -->
+	<profiles>
+		<profile>
+			<id>trivy</id>
+			<properties>
+				<trivy.severity>HIGH,CRITICAL</trivy.severity>
+				<!-- 0 = ne fait pas échouer le build ; 1 = échec si vulnérabilité trouvée -->
+				<trivy.exit.code>0</trivy.exit.code>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+						<version>3.5.0</version>
+						<executions>
+							<execution>
+								<id>trivy-scan</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+								<configuration>
+									<executable>trivy</executable>
+									<arguments>
+										<argument>fs</argument>
+										<argument>--timeout</argument>
+										<argument>30m</argument>
+										<argument>--scanners</argument>
+										<argument>vuln</argument>
+										<argument>--severity</argument>
+										<argument>${trivy.severity}</argument>
+										<argument>--exit-code</argument>
+										<argument>${trivy.exit.code}</argument>
+										<argument>--skip-dirs</argument>
+										<argument>target</argument>
+										<argument>--format</argument>
+										<argument>json</argument>
+										<argument>--output</argument>
+										<argument>${project.build.directory}/trivy-results.json</argument>
+										<argument>${project.basedir}</argument>
+									</arguments>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
