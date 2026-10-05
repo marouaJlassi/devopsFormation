@@ -30,7 +30,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: admin
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
-      - "8282:8282"
+      - "8283:8283"
 
 volumes:
   pgdata:
