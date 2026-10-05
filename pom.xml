@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>tn.formation</groupId>
 	<artifactId>formation</artifactId>
-	<version>3.3</version>
+	<version>3.4</version>
 	<name>formation</name>
 	<description>Projet Formation DevOps</description>
 	<properties>
