@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
     ports:
-      - "5440:5433"
+      - "5440:5432"
     volumes:
       - pgdata:/var/lib/postgresql
     healthcheck:
@@ -23,7 +23,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5433/devopsdb
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/devopsdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: admin
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
