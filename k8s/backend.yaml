@@ -69,5 +69,5 @@ spec:
     app: backend
   ports:
     - port: 8285
-      targetPort: 8285
+      targetPort: 8282
       nodePort: 30085
