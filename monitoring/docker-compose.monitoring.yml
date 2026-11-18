@@ -3,7 +3,7 @@ services:
     image: prom/prometheus:latest
     restart: unless-stopped
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
     command:
       - --config.file=/etc/prometheus/prometheus.yml
@@ -21,7 +21,7 @@ services:
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml:ro
+      - ./monitoring/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml:ro
     ports:
       - "3000:3000"
 
